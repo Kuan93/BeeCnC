@@ -1,0 +1,35 @@
+[33mcommit 2c0b97e1d7f9f00ead2958dbb9ef8198bf30cd20[m
+Merge: 69780b7 a9b2c2d
+Author: Kuan93 <Kuan93@users.noreply.github.com>
+Date:   Thu Sep 15 13:30:46 2016 +0800
+
+    Merge pull request #2 from Kuan93/figaro
+    
+    added figaro gem
+
+[33mcommit 69780b7c726bb218f949b2d2f1da0260184e4fb6[m
+Merge: 62216fc 720374d
+Author: Kuan93 <Kuan93@users.noreply.github.com>
+Date:   Thu Sep 15 13:28:31 2016 +0800
+
+    Merge pull request #1 from Kuan93/figaro
+    
+    add clearance gem
+
+[33mcommit a9b2c2d1d54e6e1525c91679d48f3df7fb3b1aca[m
+Author: Low Meng Kuan <kuan1209@hotmail.com>
+Date:   Thu Sep 15 13:24:58 2016 +0800
+
+    added figaro gem
+
+[33mcommit 720374d3f6d108804925d9e0a2f6dc748801adc1[m
+Author: Low Meng Kuan <kuan1209@hotmail.com>
+Date:   Thu Sep 15 12:30:15 2016 +0800
+
+    add clearance gem
+
+[33mcommit 62216fc80c171f2097618b0ab670b76de9450810[m
+Author: Low Meng Kuan <kuan1209@hotmail.com>
+Date:   Wed Sep 14 15:48:54 2016 +0800
+
+    first commit

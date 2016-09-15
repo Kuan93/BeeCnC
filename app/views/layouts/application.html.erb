@@ -6,7 +6,7 @@
 </head>
 <body>
   <div id="header">
-    <%= link_to t(".home"), home_index_path %>
+    <%= link_to "home", home_index_path %>
 
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>

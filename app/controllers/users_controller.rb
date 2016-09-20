@@ -1,5 +1,6 @@
 class UsersController < Clearance::UsersController
 	
+
 	 def user_from_params
 	 	name = user_params.delete(:name)
     email = user_params.delete(:email)

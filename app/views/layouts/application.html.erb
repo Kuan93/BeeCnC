@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="header">
-    <%= link_to "home", home_index_path %>
 
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end -%>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=521990168011585";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">BeeBnB</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+            <li><p><span class="glyphicon glyphicon-user"></span><%= link_to t(".sign_out"), sign_out_path, method: :delete %></p></li>
+            <li id="user-status" style="color: white;"> Signed in as <%=current_user.name%></li>
+          <% else %>
+            <li><%= link_to t(".sign_up"), sign_up_path%></li>
+            <li><%= link_to t(".sign_in"), sign_in_path %></li>
+            <li><%= link_to "Facebook", 'auth/facebook' %></li>  
+          <% end %>
+      </ul>
+    </div>
   </div>
+</nav>
 
   <div id="flash">
-    <% flash.each do |key, value| -%>
+    <% flash.each do |key, value| %>
       <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
   </div>

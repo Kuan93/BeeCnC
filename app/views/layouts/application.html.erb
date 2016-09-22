@@ -24,19 +24,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">BeeBnB</a>
+      <a class="navbar-brand" href="/">BeeBnB</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li class="active"><%=link_to 'Home',root_path%></li> 
+      
       </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <li><p><span class="glyphicon glyphicon-user"></span><%= link_to t(".sign_out"), sign_out_path, method: :delete %></p></li>
-            <li id="user-status" style="color: white;"> Signed in as <%=current_user.name%></li>
+            <li id="become-host"><%= link_to "Become a Host",listings_instruction_path%></li>
+
+             <div class="dropdown">
+                <li class="dropbtn" id="user-status"><%=link_to current_user.name, user_path(current_user)%></li>
+                <div class="dropdown-content">
+                  <a>Edit Profile</a>
+                  <a><%= link_to 'Logout', sign_out_path, method: :delete %></a>
+                </div>
+              </div>
+         
           <% else %>
             <li><%= link_to t(".sign_up"), sign_up_path%></li>
             <li><%= link_to t(".sign_in"), sign_in_path %></li>

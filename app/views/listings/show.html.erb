@@ -1,0 +1,18 @@
+<h1>Listings#show</h1>
+
+<% if current_user.id == @listing.user.id %> 
+	<%= link_to 'Edit listing', edit_user_listing_path(current_user, @listing) %>
+<% end %>
+
+<ul>
+		<li>Name: <%=@listing.name%></li>
+		<li>Country: <%=@listing.country%></li>
+		<li>City: <%=@listing.city%></li>
+		<li>Address: <%=@listing.address%></li>
+		<li>Room Type: <%=@listing.room_number%></li>
+		<li>Price: $<%=@listing.price%></li>
+		<li>Check In: <%=@listing.check_in.strftime('%I:%M %p')%></li>
+		<li>Check Out: <%=@listing.check_out.strftime('%I:%M %p')%></li>
+</ul>
+
+<%= link_to 'All listings', user_listings_path(@listing.user) %>

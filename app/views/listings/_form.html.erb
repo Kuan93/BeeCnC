@@ -1,0 +1,40 @@
+<%= form_for ([current_user,@listing]) do |f| %>
+	
+	<ul>
+	<li><%= f.label :name %>
+	<%= f.text_field :name %> </li>
+
+	<li><%= f.label :country %>
+	<%= f.text_field :country%> </li>
+
+	<li><%= f.label :city %>
+	<%= f.text_field :city %> </li>
+
+	<li><%= f.label :address %>
+	<%= f.text_field :address %> </li>
+
+	<li>Room type: <%= f.select :room_type, options_for_select([['Single Room',1],['Double Room',2],['Family Room',3]]), {:prompt => "-Select a room type"} %> </li>
+
+	<li>Number of rooms: <%= f.select :room_number, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of rooms"} %> </li>
+
+	<li><%= f.label :price %>
+			<%= f.text_field :price %>
+	</li>
+
+	<li><%= f.label :check_in %>
+			<%= f.text_field :check_in %>
+	</li>
+
+	<li><%= f.label :check_out %>
+			<%= f.text_field :check_out %>
+	</li>
+
+	<li><%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
+	</li>
+
+	<%= f.submit :submit %>
+
+	</ul>
+
+<% end %>
+

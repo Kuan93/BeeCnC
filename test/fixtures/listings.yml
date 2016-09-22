@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  country: MyString
+  city: MyString
+  address: MyString
+  room_type: MyString
+  price: 1
+  check_in: 2016-09-20 18:03:16
+  checkout: 2016-09-20 18:03:16
+  user_id: 
+
+two:
+  name: MyString
+  country: MyString
+  city: MyString
+  address: MyString
+  room_type: MyString
+  price: 1
+  check_in: 2016-09-20 18:03:16
+  checkout: 2016-09-20 18:03:16
+  user_id: 

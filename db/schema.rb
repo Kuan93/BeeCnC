@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918015255) do
+ActiveRecord::Schema.define(version: 20160921083636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "amenities", ["user_id"], name: "index_amenities_on_user_id", using: :btree
 
   create_table "authentications", force: :cascade do |t|
     t.string   "uid"
@@ -24,6 +34,33 @@ ActiveRecord::Schema.define(version: 20160918015255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "listing_amenities", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "listing_amenities", ["amenity_id"], name: "index_listing_amenities_on_amenity_id", using: :btree
+  add_index "listing_amenities", ["listing_id"], name: "index_listing_amenities_on_listing_id", using: :btree
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "country"
+    t.string   "city"
+    t.string   "address"
+    t.string   "room_type"
+    t.integer  "room_number"
+    t.integer  "price"
+    t.time     "check_in"
+    t.time     "check_out"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
@@ -38,4 +75,8 @@ ActiveRecord::Schema.define(version: 20160918015255) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "amenities", "users"
+  add_foreign_key "listing_amenities", "amenities"
+  add_foreign_key "listing_amenities", "listings"
+  add_foreign_key "listings", "users"
 end

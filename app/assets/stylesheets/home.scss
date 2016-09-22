@@ -12,5 +12,60 @@
  }
 
 #user-status {
-	margin-left:8px
+	margin-left:10px
 }
+
+#become-host {
+	margin-left:0;
+}
+
+#page-three {
+	margin-right:0;
+}
+
+.navbar-nav, .navbar-right {
+  height: 8.9vh;
+  line-height: 8.9vh;
+  text-align: center;
+  margin-bottom: -5px;
+}
+
+
+.dropbtn {
+    color: white;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    mid-width: 100%;
+    margin-left:10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+ 
+}
+

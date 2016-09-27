@@ -43,7 +43,11 @@ class ReservationsController < ApplicationController
     if overlap.empty?
       @reservation.save
       flash[:notice] = "Reservation successfully created! Enjoy your trip!"
+
+      Usermailer.booking_email(current_user, @host, @reservation).deliver
+
       redirect_to reservation_path(@reservation)
+
     else
       flash[:notice] = "This date range is unavailable!"
       redirect_to :back
@@ -60,6 +64,8 @@ class ReservationsController < ApplicationController
 	  # end
 
   end
+
+                                  
 
   private
 

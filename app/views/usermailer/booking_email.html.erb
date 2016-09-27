@@ -1,0 +1,20 @@
+<h2>Hi <%=@host.name%></h2>
+
+<h3>Thank you for hosting with BeeCnC!</h3>
+
+<h3>You have a new reservation request from <%=@user.name%> </h3>
+
+<p>Reservation id: <%= @reservation.id%></p>
+<p>Your listing: <%= @reservation.listing.name %></p>
+
+
+<p>You can read the reservation details at <%= link_to "here", @url %>.</p>
+
+<p>To confirm the reservation: click 
+
+<%= form_for @reservation, url: reservation_path(@reservation) do |f| %>
+	<%= f.hidden_field :confirmation, value => true %> 
+	<%= f.submit 'confirm' %>
+<% end %>
+
+</p>

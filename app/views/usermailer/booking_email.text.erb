@@ -1,0 +1,22 @@
+BeeCnC
+
+Hi <%=@host.name%>
+
+Thank you for hosting with BeeCnC!
+
+You have a new reservation request from <%=@user.name
+%>
+
+Reservation id: <%= @reservation.id%>
+Your listing: <%= @reservation.listing.name %>
+
+
+You can read the reservation details at <%= link_to "here", @url %>.
+
+
+To confirm the reservation: click 
+
+<%= form_for @reservation do |f| %>
+	<%= f.hidden_field :confirmation, value => true %> 
+	<%= f.submit 'confirm' %>
+<% end %>

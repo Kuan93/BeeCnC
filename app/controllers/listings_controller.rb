@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   
-  before_action: find_list, only:[:show, :edit, :update]
+  before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -25,7 +25,8 @@ class ListingsController < ApplicationController
   end
 
   def show
-    
+    @reservation = Reservation.new
+    @images = @listing.images
   end
 
   def edit
@@ -42,10 +43,24 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    if @listing.destroy
+      redirect_to user_listings_path(current_user)
+    else
+      render 'show'
+    end 
   end
 
   def instruction
      @user = User.find(current_user.id)
+  end
+
+  def search
+    @listings = Listing.all 
+    if params[:search]
+      @listings = Listing.search(params[:search]).order(created_at: :DESC) 
+    else 
+      @listings = Listing.all.order(created_at: :DESC)
+    end  
   end
 
 end
@@ -53,7 +68,7 @@ end
 private
 
   def listing_params
-    params.require(:listing).permit(:name, :country, :city, :address, :room_type, :room_number, :price, :check_in, :check_out, {:amenity_ids => []})
+    params.require(:listing).permit(:name, :country, :city, :address, :room_type, :room_number, :price, :check_in, :check_out, {:amenity_ids => []}, {images: []}, :remove_images)
   end
 
   def find_list

@@ -31,6 +31,13 @@ gem 'omniauth-facebook'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'mini_magick'
+
+gem 'momentjs-rails', '>= 2.9.0'
+
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

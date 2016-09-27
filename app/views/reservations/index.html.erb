@@ -1,0 +1,11 @@
+<h1><%=current_user.name%>'s reservations</h1>
+
+<% @reservations.each do |r| %>
+	<ul>
+		<li><%= link_to r.listing.name, reservation_path(r) %></li>
+		<li><%= r.start_date %></li>
+		<li><%= r.end_date %></li>
+	</ul>
+<% end %>
+
+<%= link_to "Back", user_path(current_user)%>

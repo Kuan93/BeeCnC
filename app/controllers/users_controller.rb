@@ -9,9 +9,6 @@ class UsersController < Clearance::UsersController
 	def user_from_params
     User.new(user_params)
     # User.new({name: 'adsas', email: 'dasdas'})
-    user = User.new
-    user.name = params
-    user.email = 'adsdasdsa'
   end
 
   def user_params

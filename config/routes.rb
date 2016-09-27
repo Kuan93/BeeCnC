@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :reservations, only: [:index, :show, :new, :create]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
   get 'listings/index' => 'listings#index'
 
   get 'listings/instruction'
+
+  get 'listings/search'
 
   root 'home#index'
 

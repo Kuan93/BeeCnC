@@ -1,3 +1,12 @@
+<%= form_tag(listings_search_path, :method => 'get', id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder:"Search by Country" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<%= render partial: "/home/search"%>
+
+
+
 
 <div class="container-fluid">
 	<div class="row">

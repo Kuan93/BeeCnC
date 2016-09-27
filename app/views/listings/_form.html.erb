@@ -1,4 +1,4 @@
-<%= form_for ([current_user,@listing]) do |f| %>
+<%= form_for ([current_user,@listing]) 	do |f| %>
 	
 	<ul>
 	<li><%= f.label :name %>
@@ -31,6 +31,18 @@
 
 	<li><%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
 	</li>
+
+	<li>
+		Uplaod Images: <%= f.file_field :images, multiple: true %>
+		<% f.file_field :images_cache %>
+	</li>
+
+	 <p>
+    <label>
+      <%= f.check_box :remove_images %>
+      Remove image
+    </label>
+  </p>
 
 	<%= f.submit :submit %>
 

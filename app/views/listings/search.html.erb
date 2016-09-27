@@ -1,0 +1,12 @@
+<% if @listings.present? %>
+  
+	<% @listings.each do |l|%>
+  <%= link_to l.name, user_listing_path(l.user,l) %> <br>
+  <% end %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+<br>
+
+<p><%= link_to "Back", root_path %></p>

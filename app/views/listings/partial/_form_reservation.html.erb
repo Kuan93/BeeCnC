@@ -1,0 +1,65 @@
+<%= form_for @reservation, url: reservations_path do |f| %>
+
+  <p> Start date: </p>
+      <div class="form-group">
+          <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control", name="reservation[start_date]">
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+          </div>
+      </div>
+ 
+  <p> End date: </p>
+      <div class="form-group">
+          <div class='input-group date' id='datetimepicker7'>
+              <input type='text' class="form-control", name="reservation[end_date]" >
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+          </div>
+      </div>
+
+  <ul style="list-style:none">
+
+    <li>Guests: <%= f.select :head_count ,[1,2,3,4,5,6,7,8,9] %></li>
+
+    <li><%= f.hidden_field :listing_id , :value => @listing.id %></li>
+  
+    <li>Nights:<%= @total_nights %> </li>
+
+    <li>Total price:<%= @total_price %> </li>
+
+    <li><%= f.submit "Book"%></li>
+
+  </ul>
+
+<% end %>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#datetimepicker6').datetimepicker({
+        format: 'DD-MM-YYYY'
+        });
+
+        $('#datetimepicker7').datetimepicker({
+        format: 'DD-MM-YYYY'
+        });
+
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+
+
+    });
+
+
+</script>

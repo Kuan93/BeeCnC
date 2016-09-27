@@ -1,18 +1,35 @@
-<h1>Listings#show</h1>
+<div class="container" style="background-color: #f1f1f1">
 
-<% if current_user.id == @listing.user.id %> 
-	<%= link_to 'Edit listing', edit_user_listing_path(current_user, @listing) %>
-<% end %>
+	<h1><%=@listing.name%></h1>
 
-<ul>
-		<li>Name: <%=@listing.name%></li>
-		<li>Country: <%=@listing.country%></li>
-		<li>City: <%=@listing.city%></li>
-		<li>Address: <%=@listing.address%></li>
-		<li>Room Type: <%=@listing.room_number%></li>
-		<li>Price: $<%=@listing.price%></li>
-		<li>Check In: <%=@listing.check_in.strftime('%I:%M %p')%></li>
-		<li>Check Out: <%=@listing.check_out.strftime('%I:%M %p')%></li>
-</ul>
+	<% if current_user.id == @listing.user.id %> 
+		<%= link_to 'Edit', edit_user_listing_path(current_user, @listing) %>
+		<%= link_to 'Delete', user_listing_path(current_user, @listing), method: :delete ,data: { confirm: 'Are you sure?' }%>
+	<% end %>
 
-<%= link_to 'All listings', user_listings_path(@listing.user) %>
+	<ul>
+			<li>Name: <%=@listing.name%></li>
+			<li>Country: <%=@listing.country%></li>
+			<li>City: <%=@listing.city%></li>
+			<li>Address: <%=@listing.address%></li>
+			<li>Room Type: <%=@listing.room_number%></li>
+			<li>Price: $<%=@listing.price%></li>
+			<li>Check In: <%=@listing.check_in.strftime('%I:%M %p')%></li>
+			<li>Check Out: <%=@listing.check_out.strftime('%I:%M %p')%></li>
+	</ul>
+
+
+
+		<% @images.each do |i| %>
+
+		<%= image_tag (i.thumb.url) %>
+		<%end%>
+
+
+	<br>
+	
+	<%= link_to 'All listings', user_listings_path(@listing.user) %>
+
+	<%= render partial: '/listings/partial/form_reservation'%>
+
+</div>

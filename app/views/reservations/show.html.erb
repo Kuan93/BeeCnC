@@ -1,0 +1,15 @@
+
+
+<h1><%= current_user.name%></h1>
+<h3>You have made an reservation at <%=@reservation.listing.name%></h3>
+<div id="details">
+	<p>Your reservation ID: <%=@reservation.id%></p>
+	<p>Hosted by: <%@reservation.listing.user%></p>
+	<p>Start date: <%=@reservation.start_date%> </p>
+	<p>End date: <%=@reservation.end_date%></p>
+	<p>Total guests: <%=@reservation.head_count%></p>
+	<p>Nights: <%=@total_nights%> x $<%=@listing.price%></p> 
+	<p>Total Price: $<%=@reservation.total_price%></p>
+</div>
+
+<%= link_to "Back", reservations_path(current_user)%>

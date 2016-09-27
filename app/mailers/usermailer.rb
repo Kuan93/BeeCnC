@@ -7,7 +7,6 @@ class Usermailer < ApplicationMailer
 		@host = host
 		@reservation = reservation
 		@url = 'http://localhost:3000/reservations/' + @reservation.id.to_s
-		@confirmation_url 
 		mail(to: @host.email, subject: 'New Reservation Request!')
 	end
 

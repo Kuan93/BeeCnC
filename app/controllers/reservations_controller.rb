@@ -44,7 +44,7 @@ class ReservationsController < ApplicationController
       @reservation.save
       flash[:notice] = "Reservation successfully created! Enjoy your trip!"
 
-      Usermailer.booking_email(current_user, @host, @reservation).deliver
+      ReservationJob.set(wait: 1.minute).perform_later(current_user, @host, @reservation)
 
       redirect_to reservation_path(@reservation)
 

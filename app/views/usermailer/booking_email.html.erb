@@ -12,9 +12,4 @@
 
 <p>To confirm the reservation: click 
 
-<%= form_for @reservation, url: reservation_path(@reservation) do |f| %>
-	<%= f.hidden_field :confirmation, value => true %> 
-	<%= f.submit 'confirm' %>
-<% end %>
-
 </p>

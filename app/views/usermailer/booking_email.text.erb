@@ -15,8 +15,3 @@ You can read the reservation details at <%= link_to "here", @url %>.
 
 
 To confirm the reservation: click 
-
-<%= form_for @reservation do |f| %>
-	<%= f.hidden_field :confirmation, value => true %> 
-	<%= f.submit 'confirm' %>
-<% end %>

@@ -12,4 +12,6 @@
 	<p>Total Price: $<%=@reservation.total_price%></p>
 </div>
 
+
+<%= link_to "Pay now", payment_new_path%>
 <%= link_to "Back", reservations_path(current_user)%>

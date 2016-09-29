@@ -54,16 +54,17 @@ class ListingsController < ApplicationController
      @user = User.find(current_user.id)
   end
 
-  def search
-    @listings = Listing.all 
-    if params[:search]
-      @listings = Listing.search(params[:search]).order(created_at: :DESC) 
-    else 
-      @listings = Listing.all.order(created_at: :DESC)
-    end  
-  end
 
-end
+
+  # def search
+  #   @listings = Listing.all 
+  #   if params[:search]
+  #     @listings = Listing.search(params[:search]).order(created_at: :DESC) 
+  #   else 
+  #     @listings = Listing.all.order(created_at: :DESC)
+  #   end  
+  # end
+
 
 private
 
@@ -74,3 +75,7 @@ private
   def find_list
     @listing = Listing.find(params[:id])
   end
+
+ 
+
+end

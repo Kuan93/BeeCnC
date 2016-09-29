@@ -1,13 +1,22 @@
-<%= form_tag(listings_search_path, :method => 'get', id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder:"Search by Country" %>
-<%= submit_tag "Search" %>
+
+<%= form_tag(url: search_path, :method => 'get', class: "navbar-form navbar-left") do %>
+    <%= text_field_tag :name, params[:name], placeholder:"If you know where to stay" %>
+    <%= text_field_tag :country, params[:country], placeholder: "Search by country" %>
+
+    <%= submit_tag 'search', class: 'btn btn-primary' %>
 <% end %>
 
-<%= render partial: "/home/search"%>
 
-
-
-
+<% if !@listings.blank? %>
+	<table>
+		<% @listings.each do |l|%>
+			<tr>
+				<td><%=l.name%></td>
+				<td><%=l.country%></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-6 col-sm-6 col-md-6 part-one ">

@@ -56,6 +56,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.17.42)
       momentjs-rails (>= 2.8.1)
+    braintree (2.66.0)
+      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (9.0.5)
     clearance (1.14.2)
@@ -72,6 +74,14 @@ GEM
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
     debug_inspector (0.0.2)
+    elasticsearch (2.0.0)
+      elasticsearch-api (= 2.0.0)
+      elasticsearch-transport (= 2.0.0)
+    elasticsearch-api (2.0.0)
+      multi_json
+    elasticsearch-transport (2.0.0)
+      faraday
+      multi_json
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
@@ -170,6 +180,10 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    searchkick (1.3.5)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     sidekiq (4.2.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -209,6 +223,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootstrap3-datetimepicker-rails (~> 4.17.42)
+  braintree
   byebug
   carrierwave!
   clearance
@@ -224,6 +239,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  searchkick
   sidekiq
   sinatra (>= 1.3.0)
   spring

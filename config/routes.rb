@@ -1,6 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'payment/new'
+
+  get 'payment/create'
+
+  get 'payment/show'
+
 mount Sidekiq::Web => '/sidekiq'
 
   resources :reservations, only: [:index, :show, :new, :create]
@@ -13,6 +19,8 @@ mount Sidekiq::Web => '/sidekiq'
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
     resources :listings
+
+  resources :payments, only: [:new, :create, :show]
 
   end
 
@@ -31,7 +39,11 @@ mount Sidekiq::Web => '/sidekiq'
 
   get 'listings/instruction'
 
-  get 'listings/search'
+  # get 'listings/search'
+
+  post 'braintree/check_out'
+
+  get '/search' => 'home#search'
 
   root 'home#index'
 

@@ -6,9 +6,12 @@ class Listing < ActiveRecord::Base
   has_many :amenities, through: :listing_amenities
   has_many :reservations, :dependent => :destroy
 
-	def self.search(search)
-		word = "%#{search}%"
-		where("country LIKE ?", word)
-	end
+	# def self.search(search)
+	# 	word = "%#{search}%"
+	# 	where("country LIKE ?", word)
+	# end
+
+searchkick match: :word_start, searchable: [:name, :country]
+
 
 end
